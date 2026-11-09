@@ -108,6 +108,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .facts dd { font-size: 16px; font-weight: 600; }
 
 /* 예약 묶음 */
+.next { display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; }
 .booking { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 36px; padding-bottom: clamp(88px, 12vw, 140px); }
 .booking h2 { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.55; letter-spacing: -0.02em; }
 .btns { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 320px; }
