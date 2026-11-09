@@ -20,12 +20,14 @@
     if (e.matches && !menu.hidden) { menu.hidden = true; burger.setAttribute("aria-expanded", "false"); document.documentElement.classList.remove("lock"); }
   });
 
-  // 주변 탭
-  const tabs = $$('.tabs [role="tab"]');
-  tabs.forEach((t) => t.addEventListener("click", () => {
-    tabs.forEach((x) => x.setAttribute("aria-selected", String(x === t)));
-    $$(".grp").forEach((g) => { g.hidden = t.dataset.f !== "all" && g.dataset.g !== t.dataset.f; });
-  }));
+  // 탭(주변 분류·이용안내 사용법): 탭 묶음마다 같은 칸 안의 .grp만 바꿈
+  $$(".tabs").forEach((bar) => {
+    const tabs = $$('[role="tab"]', bar), grps = $$(".grp", bar.parentElement);
+    tabs.forEach((t) => t.addEventListener("click", () => {
+      tabs.forEach((x) => x.setAttribute("aria-selected", String(x === t)));
+      grps.forEach((g) => { g.hidden = t.dataset.f !== "all" && g.dataset.g !== t.dataset.f; });
+    }));
+  });
 
   // 이용안내 동의 → 예약 버튼
   const agree = $("#agree"), book = $("#agree-book");
