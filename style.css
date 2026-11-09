@@ -109,9 +109,14 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .btns { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 320px; }
 
 /* 이야기: 조식 재료 */
-.breakfast { display: flex; flex-direction: column; }
-.breakfast > div { display: flex; flex-direction: column; gap: 12px; padding: 32px 0; border-bottom: 1px solid var(--line); }
-.breakfast > div:first-child { border-top: 1px solid var(--ink); }
+.breakfast { display: flex; flex-direction: column; align-items: center; }
+.breakfast summary { display: inline-flex; align-items: center; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--ink); font-size: 15px; font-weight: 600; cursor: pointer; list-style: none; }
+.breakfast summary::-webkit-details-marker { display: none; }
+.breakfast summary::after { content: "+"; font-weight: 400; }
+.breakfast[open] summary::after { content: "−"; }
+.bf-list { width: 100%; margin-top: 32px; display: flex; flex-direction: column; }
+.bf-list > div { display: flex; flex-direction: column; gap: 12px; padding: 32px 0; border-bottom: 1px solid var(--line); }
+.bf-list > div:first-child { border-top: 1px solid var(--ink); }
 .breakfast h3 { font-size: 19px; letter-spacing: -0.01em; }
 .breakfast p { font-size: 16px; color: var(--body); }
 
