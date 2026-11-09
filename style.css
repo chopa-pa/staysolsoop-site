@@ -148,8 +148,16 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .agree input { width: 20px; height: 20px; margin: 0; accent-color: var(--ink); }
 .btn-agree { width: 100%; max-width: 320px; }
 .btn-agree[aria-disabled="true"], .btn-agree[aria-disabled="true"]:hover { background: var(--off); cursor: not-allowed; }
-.manual { display: flex; flex-direction: column; gap: 28px; }
+.manual { display: flex; flex-direction: column; }
 .manual h2 { font-size: clamp(24px, 2.6vw, 30px); text-align: center; letter-spacing: -0.02em; }
+.manual-toggle { display: inline-flex; align-items: center; gap: 12px; padding: 4px 0; font: inherit; color: inherit; letter-spacing: inherit; background: none; border: 0; cursor: pointer; }
+.manual-toggle::after { content: "+"; font-size: 0.75em; font-weight: 400; transition: transform 0.35s ease; }
+.manual-toggle[aria-expanded="true"]::after { transform: rotate(45deg); }
+/* 접힌 채 시작(스크립트가 .fold 붙임) → 누르면 높이가 스르륵 */
+.manual-body { display: grid; grid-template-rows: 1fr; transition: grid-template-rows 0.45s ease; }
+.manual.fold:not(.open) .manual-body { grid-template-rows: 0fr; }
+.manual-in { min-height: 0; overflow: hidden; overflow: clip; display: flex; flex-direction: column; gap: 28px; padding-top: 28px; }
+@media (prefers-reduced-motion: reduce) { .manual-body, .manual-toggle::after { transition: none; } }
 .toons { display: flex; flex-direction: column; gap: 12px; }
 .toons img { width: 100%; height: auto; display: block; background: var(--pale); }
 
@@ -158,15 +166,16 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .around-intro .note { font-size: 14px; color: var(--muted); }
 .places { display: flex; flex-direction: column; gap: 40px; }
 .tabs {
-  position: sticky; top: 61px; z-index: 5; background: var(--bg); display: flex; gap: 8px;
-  overflow-x: auto; padding: 10px 28px; margin: 0 -28px; scrollbar-width: none;
+  position: sticky; top: 61px; z-index: 5; background: var(--bg); display: flex; gap: 22px;
+  overflow-x: auto; padding: 0 28px; margin: 0 -28px; scrollbar-width: none; border-bottom: 1px solid var(--line);
 }
 .tabs::-webkit-scrollbar { display: none; }
 .tabs button {
-  flex: none; height: 40px; padding: 0 16px; border: 1px solid var(--ink); background: var(--bg); color: var(--ink);
-  font-size: 14px; font-weight: 600; cursor: pointer; white-space: nowrap; border-radius: 0;
+  flex: none; height: 48px; padding: 0; border: 0; border-bottom: 2px solid transparent; background: none; color: var(--muted);
+  font-size: 15px; font-weight: 600; cursor: pointer; white-space: nowrap; border-radius: 0;
 }
-.tabs button[aria-selected="true"] { background: var(--ink); color: #fff; }
+.tabs button:hover { color: var(--ink); }
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--ink); }
 .grp { display: flex; flex-direction: column; }
 .grp[hidden] { display: none; }
 .grp h2 { font-size: clamp(22px, 2.4vw, 26px); padding-bottom: 16px; border-bottom: 1px solid var(--ink); }

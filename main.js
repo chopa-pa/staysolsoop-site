@@ -1,4 +1,4 @@
-// 스테이솔숲 홈페이지 동작: 펼침 메뉴, 주변 탭, 이용안내 동의 → 예약 버튼, 주소 복사
+// 스테이솔숲 홈페이지 동작: 펼침 메뉴, 탭(주변·사용법), 사용법 접기, 이용안내 동의 → 예약 버튼, 주소 복사
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -27,6 +27,14 @@
       tabs.forEach((x) => x.setAttribute("aria-selected", String(x === t)));
       grps.forEach((g) => { g.hidden = t.dataset.f !== "all" && g.dataset.g !== t.dataset.f; });
     }));
+  });
+
+  // 이용안내 사용법: 접힌 채 시작, 제목 누르면 펼침/접음
+  $$(".manual").forEach((m) => {
+    const btn = $(".manual-toggle", m), inner = $(".manual-in", m);
+    const set = (open) => { m.classList.toggle("open", open); btn.setAttribute("aria-expanded", String(open)); inner.inert = !open; };
+    m.classList.add("fold"); set(false);
+    btn.addEventListener("click", () => set(!m.classList.contains("open")));
   });
 
   // 이용안내 동의 → 예약 버튼
