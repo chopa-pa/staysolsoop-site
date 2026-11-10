@@ -79,13 +79,13 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* 사진 L · M · S */
-.ph { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.ph { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 10px; }
 .ph-l { max-width: 1200px; }
 .ph-m { max-width: 720px; }
 .ph-s { max-width: 560px; padding: 0 28px; }
 .ph-box { width: 100%; background: var(--line); overflow: hidden; }
 .ph-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.ph figcaption { font-family: var(--serif); font-size: 15px; color: var(--ink); }
+.ph figcaption { font-family: var(--serif); font-size: 13px; color: var(--ink); }
 .strip { width: 100%; display: flex; flex-direction: column; align-items: center; gap: clamp(16px, 2vw, 28px); }
 
 /* 글 */
