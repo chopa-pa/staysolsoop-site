@@ -29,6 +29,28 @@
     }));
   });
 
+  // 사용법 그림 넘기기: 그림 2장 이상이면 아래 점으로 몇 번째인지 표시(넘칠 때만)
+  $$(".grp.toons").forEach((g) => {
+    const imgs = $$("img", g);
+    if (imgs.length < 2) return;
+    const dots = document.createElement("div");
+    dots.className = "dots"; dots.hidden = g.hidden;
+    dots.innerHTML = imgs.map(() => "<span></span>").join("");
+    g.after(dots);
+    const sync = () => {
+      dots.hidden = g.hidden || g.scrollWidth <= g.clientWidth + 2;
+      const mid = g.scrollLeft + g.clientWidth / 2;
+      let k = 0, best = Infinity;
+      imgs.forEach((im, i) => { const d = Math.abs(im.offsetLeft + im.offsetWidth / 2 - mid); if (d < best) { best = d; k = i; } });
+      $$("span", dots).forEach((s, i) => s.classList.toggle("on", i === k));
+    };
+    g.addEventListener("scroll", sync, { passive: true });
+    new MutationObserver(sync).observe(g, { attributes: true, attributeFilter: ["hidden"] });
+    addEventListener("resize", sync);
+    imgs.forEach((im) => im.addEventListener("load", sync));
+    sync();
+  });
+
   // 이용안내 사용법: 접힌 채 시작, 제목 누르면 펼침/접음
   $$(".manual").forEach((m) => {
     const btn = $(".manual-toggle", m), inner = $(".manual-in", m);

@@ -160,6 +160,20 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 @media (prefers-reduced-motion: reduce) { .manual-body, .manual-toggle::after { transition: none; } }
 .toons { display: flex; flex-direction: column; gap: 12px; }
 .toons img { width: 100%; height: auto; display: block; background: var(--pale); }
+/* 사용법 그림: 옆으로 넘기기(휴대폰 한 장씩·다음 장 살짝, 넓은 화면 두 장 나란히) */
+.grp.toons { position: relative; flex-direction: row; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; overscroll-behavior-x: contain; }
+.grp.toons::-webkit-scrollbar { display: none; }
+.grp.toons img { flex: 0 0 86%; width: 86%; scroll-snap-align: center; }
+.grp.toons img:first-child { margin-left: 7%; }
+.grp.toons img:last-child { margin-right: 7%; }
+.dots { display: flex; justify-content: center; gap: 8px; margin-top: -14px; }
+.dots[hidden] { display: none; }
+.dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--off); }
+.dots span.on { background: var(--ink); }
+@media (min-width: 700px) {
+  .grp.toons img { flex-basis: calc(50% - 6px); width: calc(50% - 6px); }
+  .grp.toons img:first-child, .grp.toons img:last-child { margin: 0; }
+}
 
 /* 주변 */
 .around-intro { display: flex; flex-direction: column; gap: 1.4em; margin-top: 24px; font-size: 16px; color: var(--body); }

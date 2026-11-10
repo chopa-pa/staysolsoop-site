@@ -18,5 +18,5 @@
 - [이야기](https://staysolsoop.kr/story.html): 산청에 오게 된 이야기, 살린 소나무, 셀프 조식
 - [공간](https://staysolsoop.kr/stay.html): 원룸형 목조 독채, 침실 창 두 개
 - [주변](https://staysolsoop.kr/around.html): 차로 20분 안 맛집·카페·가볼 만한 곳
-- [이용안내](https://staysolsoop.kr/guide.html): 규칙, 요금, 취소·환불, 기기 사용법
+- [이용안내](https://staysolsoop.kr/guide.html): 규칙, 요금, 취소·환불, 솔숲 사용설명서(기기 사용법)
 - [오시는 길](https://staysolsoop.kr/location.html): 단성IC에서 차로 20분
