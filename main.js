@@ -84,3 +84,46 @@
     });
   });
 })();
+
+// 안내 글 줄 내림(11-15 쵸파파 「말 단위로」): span.s 한 줄이 넘치면 화면 폭을 재서 「~이며,」「~하거나」「~는」 같은 말 단위 뒤에서 내림
+(() => {
+  const PR = [/(?<=\S)(며|고|서|면|지만|는데|니다|어|여|라|로|에), /g, /(?<!그리)(거나|면서|는데|지만|어서|아서|니까|도록|려고|으며|며|고|면|서|다가|이라|있어|없어|해서|하여|위해|의해|따라|경우|때) /g,
+    /(?<=\S\S)(는|은|이|가|을|를|에서|에는|도) /g, /, /g, / /g];
+  const wrap = () => {
+    for (const s of document.querySelectorAll('span.s')) {
+      if (!s.dataset.t) s.dataset.t = s.textContent;
+      const p = s.parentElement, cs = getComputedStyle(p);
+      const W = p.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      if (!W || s.dataset.w == W) continue;   // 숨은 탭은 열릴 때, 같은 폭이면 그대로
+      s.dataset.w = W;
+      s.textContent = s.dataset.t;
+      const pr = document.createElement('span');
+      pr.style.cssText = 'position:absolute;visibility:hidden;white-space:nowrap';
+      p.appendChild(pr);
+      const w = (t) => { pr.textContent = t; return pr.getBoundingClientRect().width; };
+      let rest = s.dataset.t, out = [], g = 0;
+      while (w(rest) > W && g++ < 8) {
+        let best = -1;
+        for (const [pi, rx] of PR.entries()) {
+          rx.lastIndex = 0; let m;
+          while ((m = rx.exec(rest))) {
+            const k = m.index + m[0].length, head = rest.slice(0, k).trimEnd(), hw = w(head);
+            if (hw > W) break;
+            if (rest.length - k >= 9 && (hw >= W * 0.35 || (pi <= 1 && w(rest.slice(k)) <= W))) best = k;   // 이음말 뒤는 나머지가 한 줄이면 첫 줄이 짧아도 됨
+          }
+          if (best > 0) break;
+        }
+        if (best < 0) break;
+        out.push(rest.slice(0, best).trimEnd()); rest = rest.slice(best);
+      }
+      out.push(rest);
+      pr.remove();
+      if (out.length > 1) { s.textContent = ''; out.forEach((t, i) => { if (i) s.appendChild(document.createElement('br')); s.appendChild(document.createTextNode(t)); }); }
+    }
+  };
+  let lastW = 0, tm;
+  const run = () => { if (innerWidth !== lastW) { lastW = innerWidth; wrap(); } };
+  (document.fonts ? document.fonts.ready : Promise.resolve()).then(run);
+  addEventListener('resize', () => { clearTimeout(tm); tm = setTimeout(run, 150); });
+  addEventListener('click', () => setTimeout(wrap, 60));   // 탭·접기 열린 뒤
+})();
