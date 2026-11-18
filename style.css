@@ -257,3 +257,4 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .hero-seg button[aria-pressed="true"] { background: rgba(255,255,255,.92); color: #1e2821; }
 .hero-home .hero-toggle { display: none; }
 @media (min-width: 1024px) { .hero-seg { bottom: 24px; padding: 4px; } .hero-seg button { width: 46px; height: 34px; } }
+.specs .nb { white-space: nowrap; }
