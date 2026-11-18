@@ -245,3 +245,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 @media (prefers-reduced-motion: reduce) { .gl-track { scroll-behavior: auto; } }
 .strip:has(.gallery) { gap: clamp(40px, 6vw, 72px); }
 .gallery-tall { max-width: 560px; }
+
+/* 첫 사진 위 작은 글(11-18 주변 소북 사진) */
+.hero-cap { position: absolute; left: 20px; bottom: 18px; color: #fff; font-family: var(--serif); font-size: 14px; line-height: 1.5; text-shadow: 0 1px 6px rgba(0,0,0,.55); display: flex; flex-direction: column; gap: 2px; }
+.hero-cap span { font-family: var(--sans, inherit); font-size: 12px; opacity: .85; letter-spacing: .02em; }
