@@ -250,12 +250,10 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .hero-cap { position: absolute; left: 20px; bottom: 18px; color: #fff; font-family: var(--serif); font-size: 14px; line-height: 1.5; text-shadow: 0 1px 6px rgba(0,0,0,.55); display: flex; flex-direction: column; gap: 2px; }
 .hero-cap span { font-family: var(--sans, inherit); font-size: 12px; opacity: .85; letter-spacing: .02em; }
 
-/* 넓은 화면 첫 사진 낮·밤 고르기(가운데 아래). 폰은 오른쪽 아래 동그라미 그대로 */
-.hero-seg { display: none; }
-@media (min-width: 1024px) {
-  .hero-seg { display: flex; position: absolute; left: 50%; bottom: 24px; transform: translateX(-50%); padding: 4px; gap: 2px; border-radius: 999px; background: rgba(0,0,0,.22); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.35); }
-  .hero-seg button { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 16px; border: 0; border-radius: 999px; background: transparent; color: rgba(255,255,255,.85); font-size: 14px; cursor: pointer; transition: background .2s, color .2s; }
-  .hero-seg button svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
-  .hero-seg button[aria-pressed="true"] { background: rgba(255,255,255,.92); color: #1e2821; }
-  .hero-seg + .hero-toggle, .hero-home .hero-toggle { display: none; }
-}
+/* 첫 사진 낮·밤 고르기(가운데 아래, 그림만). 11-18: 폰도 같은 모양, 동그라미 단추는 숨김 */
+.hero-seg { display: flex; position: absolute; left: 50%; bottom: 16px; transform: translateX(-50%); padding: 3px; gap: 2px; border-radius: 999px; background: rgba(0,0,0,.22); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.35); }
+.hero-seg button { display: flex; align-items: center; justify-content: center; width: 44px; height: 36px; padding: 0; border: 0; border-radius: 999px; background: transparent; color: rgba(255,255,255,.85); cursor: pointer; transition: background .2s, color .2s; }
+.hero-seg button svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.hero-seg button[aria-pressed="true"] { background: rgba(255,255,255,.92); color: #1e2821; }
+.hero-home .hero-toggle { display: none; }
+@media (min-width: 1024px) { .hero-seg { bottom: 24px; padding: 4px; } .hero-seg button { width: 46px; height: 34px; } }
