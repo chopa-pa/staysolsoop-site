@@ -127,3 +127,20 @@
   addEventListener('resize', () => { clearTimeout(tm); tm = setTimeout(run, 150); });
   addEventListener('click', () => setTimeout(wrap, 60));   // 탭·접기 열린 뒤
 })();
+
+// 공간 슬라이드: 작은 사진 누르면 이동, 지금 사진 표시, 화면에 보일 때만 6초마다 자동으로 넘김(손대면 멈춤)
+(() => {
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.gallery').forEach(g => {
+    const tr = g.querySelector('.gl-track'), th = [...g.querySelectorAll('.gl-thumb')], n = th.length;
+    let cur = 0, auto = !still, seen = false;
+    const go = i => { cur = (i + n) % n; tr.scrollTo({ left: cur * tr.clientWidth }); };
+    const mark = () => { cur = Math.round(tr.scrollLeft / tr.clientWidth); th.forEach((b, i) => b.classList.toggle('on', i === cur)); };
+    th.forEach((b, i) => b.addEventListener('click', () => { auto = false; go(i); }));
+    tr.addEventListener('scroll', () => requestAnimationFrame(mark), { passive: true });
+    ['pointerdown', 'wheel', 'keydown'].forEach(ev => tr.addEventListener(ev, () => { auto = false; }, { passive: true }));
+    new IntersectionObserver(es => { seen = es[0].isIntersecting; }, { threshold: .6 }).observe(tr);
+    mark();
+    if (n > 1) setInterval(() => { if (auto && seen && !document.hidden) go(cur + 1); }, 6000);
+  });
+})();
