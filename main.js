@@ -131,7 +131,7 @@
 // 공간 슬라이드: 작은 사진 누르면 이동, 지금 사진 표시, 화면에 보일 때만 6초마다 자동으로 넘김(손대면 멈춤)
 (() => {
   const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  document.querySelectorAll('.gallery').forEach(g => {
+  document.querySelectorAll('.gallery, .hero-gl').forEach(g => {   // .hero-gl = 주변 첫 사진 여러 장(점으로 표시)
     const tr = g.querySelector('.gl-track'), th = [...g.querySelectorAll('.gl-thumb')], n = th.length;
     let cur = 0, auto = !still, seen = false;
     const go = i => { cur = (i + n) % n; tr.scrollTo({ left: cur * tr.clientWidth }); };

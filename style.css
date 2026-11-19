@@ -259,3 +259,11 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 @media (min-width: 1024px) { .hero-seg { bottom: 24px; padding: 4px; } .hero-seg button { width: 46px; height: 34px; } }
 .specs .nb { white-space: nowrap; }
 .map-link { display: block; color: inherit; }   /* 주변 지도: 누르면 원본 크게 */
+/* 주변: 첫 사진 여러 장 슬라이드(점), 장소 칸 사진(11-19) */
+.hero-gl .gl-track { width: 100%; height: 100%; aspect-ratio: auto; background: none; }
+.hero-gl .gl-slide { position: relative; }
+.hero-gl .gl-thumbs { position: absolute; left: 0; right: 0; bottom: 16px; padding: 0; gap: 8px; }
+.hero-gl .gl-thumb { width: 8px; height: 8px; border-radius: 50%; background: #fff; opacity: .5; box-shadow: 0 0 4px rgba(0,0,0,.4); }
+.hero-gl .gl-thumb.on { opacity: 1; }
+.gallery figcaption:empty { display: none; }
+.place .gallery { margin: 14px 0 6px; }
