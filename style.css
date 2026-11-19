@@ -258,3 +258,4 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .hero-home .hero-toggle { display: none; }
 @media (min-width: 1024px) { .hero-seg { bottom: 24px; padding: 4px; } .hero-seg button { width: 46px; height: 34px; } }
 .specs .nb { white-space: nowrap; }
+.map-link { display: block; color: inherit; }   /* 주변 지도: 누르면 원본 크게 */
