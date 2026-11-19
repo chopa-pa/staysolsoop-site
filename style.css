@@ -267,3 +267,4 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .hero-gl .gl-thumb.on { opacity: 1; }
 .gallery figcaption:empty { display: none; }
 .place .gallery { margin: 14px 0 6px; }
+.ft-copy { max-width: 1440px; margin: 0 auto; padding: 0 clamp(20px, 3vw, 48px) 24px; font-size: 12px; color: var(--muted); }   /* 11-19 저작권 문구 */
