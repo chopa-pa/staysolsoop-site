@@ -262,8 +262,8 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 /* 주변: 첫 사진 여러 장 슬라이드(점), 장소 칸 사진(11-19) */
 .hero-gl .gl-track { width: 100%; height: 100%; aspect-ratio: auto; background: none; }
 .hero-gl .gl-slide { position: relative; }
-.hero-gl .gl-thumbs { position: absolute; left: 0; right: 0; bottom: 16px; padding: 0; gap: 8px; }
-.hero-gl .gl-thumb { width: 8px; height: 8px; border-radius: 50%; background: #fff; opacity: .5; box-shadow: 0 0 4px rgba(0,0,0,.4); }
+.hero-gl .gl-thumbs { position: absolute; left: 0; right: 0; bottom: 8px; padding: 0; gap: 0; }
+.hero-gl .gl-thumb { box-sizing: content-box; width: 8px; height: 8px; padding: 8px; background: #fff; background-clip: content-box; border-radius: 50%; opacity: .5; filter: drop-shadow(0 0 2px rgba(0,0,0,.5)); }   /* 점은 8px, 누르는 곳은 24px */
 .hero-gl .gl-thumb.on { opacity: 1; }
 .gallery figcaption:empty { display: none; }
 .place .gallery { margin: 14px 0 6px; }
