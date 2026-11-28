@@ -72,6 +72,7 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .flow-end { padding-bottom: clamp(88px, 12vw, 140px); }
 .col { width: 100%; max-width: 560px; padding: 0 28px; }
 .col-w { max-width: 640px; }
+.scene { width: 100%; display: flex; flex-direction: column; align-items: center; gap: clamp(24px, 3vw, 36px); }   /* 11-28 홈 하루 장면: 사진과 글을 한 묶음으로(캡션 없이), 장면 사이는 flow 간격 */
 
 /* 첫 사진 */
 .hero { width: 100%; max-width: 1440px; height: 72vh; height: 72svh; min-height: 420px; max-height: 860px; background: var(--line); }
