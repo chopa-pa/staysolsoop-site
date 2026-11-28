@@ -267,4 +267,5 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid 
 .hero-gl .gl-thumb { box-sizing: content-box; width: 8px; height: 8px; padding: 8px; background: #fff; background-clip: content-box; border-radius: 50%; opacity: .5; filter: drop-shadow(0 0 2px rgba(0,0,0,.5)); }   /* 점은 8px, 누르는 곳은 24px */
 .hero-gl .gl-thumb.on { opacity: 1; }
 .gallery figcaption:empty { display: none; }
+.gl-desc { display: flex; flex-direction: column; gap: 1.2em; margin-top: 18px; padding: 0 28px; max-width: 560px; text-align: center; font-size: 16px; color: var(--body); }   /* 11-28 공간 설명 */
 .ft-copy { max-width: 1440px; margin: 0 auto; padding: 0 clamp(20px, 3vw, 48px) 24px; font-size: 12px; color: var(--muted); }   /* 11-19 저작권 문구 */
